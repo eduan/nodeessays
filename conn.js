@@ -3,10 +3,12 @@ mysql = require("mysql");
      
 var connection = mysql.createConnection({ 
     user: "root", 
-    password: "", 
-    database: ""
+    password: "pass", 
+    database: "database"
 }); 
 
-connection.query('SELECT 1', server.echo(JSON.stringify(rows)));
+connection.query('SHOW FULL TABLES', function(err, rows, fields){
+    server.echo(JSON.stringify(rows))
+});
 
 server.end();
